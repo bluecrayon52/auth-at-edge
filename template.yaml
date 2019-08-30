@@ -1,0 +1,92 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Lambda@Edge functions to be used with CloudFront and Cognito for authentication and content
+  
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 60
+
+Resources:
+  CheckAuthHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-edge/check-auth/
+      Handler: bundle.handler
+      Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
+      Role: !GetAtt LambdaEdgeExecutionRole.Arn
+      Timeout: 5
+
+  HttpHeadersHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-edge/http-headers/
+      Handler: bundle.handler
+      Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
+      Role: !GetAtt LambdaEdgeExecutionRole.Arn
+      Timeout: 5
+
+  ParseAuthHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-edge/parse-auth/
+      Handler: bundle.handler
+      Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
+      Role: !GetAtt LambdaEdgeExecutionRole.Arn
+      Timeout: 5
+
+  RefreshAuthHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-edge/refresh-auth/
+      Handler: bundle.handler
+      Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
+      Role: !GetAtt LambdaEdgeExecutionRole.Arn
+      Timeout: 5
+  
+  SignOutHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-edge/sign-out/
+      Handler: bundle.handler
+      Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
+      Role: !GetAtt LambdaEdgeExecutionRole.Arn
+      Timeout: 5
+  
+  LambdaEdgeExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - edgelambda.amazonaws.com
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+Outputs:
+  CheckAuthHandler:
+    Description: The Lambda function ARN to use in Lambda@Edge for checking the presence of a valid JWT
+    Value: !GetAtt CheckAuthHandler.FunctionArn
+
+  HttpHeadersHandler:
+    Description: The Lambda function ARN to use in Lambda@Edge for setting HTTP security headers
+    Value: !GetAtt HttpHeadersHandler.FunctionArn
+
+  ParseAuthHandler:
+    Description: The Lambda function ARN to use in Lambda@Edge for parsing the URL of the redirect from the Cognito hosted UI after succesful sign-in
+    Value: !GetAtt ParseAuthHandler.FunctionArn
+
+  RefreshAuthHandler:
+    Description: The Lambda function ARN to use in Lambda@Edge for getting new JWT's using the refresh token
+    Value: !GetAtt RefreshAuthHandler.FunctionArn
+
+  SignOutHandler:
+    Description: The Lambda function ARN to use in Lambda@Edge for signing out
+    Value: !GetAtt SignOutHandler.FunctionArn
