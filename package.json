@@ -1,0 +1,32 @@
+{
+  "name": "auth-at-edge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Sorry, there aren't any tests\"; exit 1",
+    "tsc": "tsc -b",
+    "webpack": "webpack --progress",
+    "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer ./stats.json",
+    "build": "npm run tsc && npm run webpack",
+    "update-dependencies": "for DIR in $(ls -d lambda-edge/*); do [[ ! -f ${DIR}/package.json ]] || (cd ${DIR} && echo \"Updating ${DIR} ...\" && npm --depth 9999 update); done",
+    "postinstall": "for DIR in $(ls -d lambda-edge/*); do [[ ! -f ${DIR}/package.json ]] || (cd ${DIR} && echo \"Updating ${DIR} ...\" && npm install --ignore-scripts); done"
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "terser-webpack-plugin": "^1.4.1",
+    "webpack": "^4.39.2",
+    "webpack-bundle-analyzer": "^3.4.1",
+    "webpack-cli": "^3.3.7"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.514.0",
+    "axios": "^0.19.0",
+    "cookie": "^0.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^1.6.0",
+    "ncp": "^2.0.0",
+    "s3-spa-upload": "^1.1.5"
+  }
+}
