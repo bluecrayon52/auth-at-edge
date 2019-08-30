@@ -12,6 +12,7 @@ Resources:
   CheckAuthHandler:
     Type: AWS::Serverless::Function
     Properties:
+      AutoPublishAlias: demo
       CodeUri: lambda-edge/check-auth/
       Handler: bundle.handler
       Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
@@ -21,6 +22,7 @@ Resources:
   HttpHeadersHandler:
     Type: AWS::Serverless::Function
     Properties:
+      AutoPublishAlias: demo
       CodeUri: lambda-edge/http-headers/
       Handler: bundle.handler
       Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
@@ -30,6 +32,7 @@ Resources:
   ParseAuthHandler:
     Type: AWS::Serverless::Function
     Properties:
+      AutoPublishAlias: demo
       CodeUri: lambda-edge/parse-auth/
       Handler: bundle.handler
       Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
@@ -39,6 +42,7 @@ Resources:
   RefreshAuthHandler:
     Type: AWS::Serverless::Function
     Properties:
+      AutoPublishAlias: demo
       CodeUri: lambda-edge/refresh-auth/
       Handler: bundle.handler
       Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
@@ -48,6 +52,7 @@ Resources:
   SignOutHandler:
     Type: AWS::Serverless::Function
     Properties:
+      AutoPublishAlias: demo
       CodeUri: lambda-edge/sign-out/
       Handler: bundle.handler
       Runtime: nodejs8.10 # Currently for Lambda@Edge still a faster runtime than nodejs10.x
