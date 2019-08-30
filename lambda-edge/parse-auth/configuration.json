@@ -1,18 +1,24 @@
 {
-    "userPoolId": "",
-    "clientId": "",
-    "oauthScopes": ["phone", "email", "profile", "openid", "aws.cognito.signin.user.admin"],
-    "cognitoAuthDomain": ".auth.us-east-1.amazoncognito.com",
-    "redirectPathSignIn": "/parseauth",
-    "redirectPathSignOut": "/",
-    "redirectPathAuthRefresh": "/refreshauth",
-    "cookieSettings": {
+  "userPoolId": "us-east-1_poe0s13Xv",
+  "clientId": "1ni4if6833h0uqpa2phdkf1sp6",
+  "oauthScopes": [
+    "phone",
+    "email",
+    "profile",
+    "openid",
+    "aws.cognito.signin.user.admin"
+  ],
+  "cognitoAuthDomain": "auth-4fn5eo2dm4.auth.us-east-1.amazoncognito.com",
+  "redirectPathSignIn": "/parseauth",
+  "redirectPathSignOut": "/",
+  "redirectPathAuthRefresh": "/refreshauth",
+  "cookieSettings": {
     "idToken": "Path=/; Secure; SameSite=Lax",
     "accessToken": "Path=/; Secure; SameSite=Lax",
     "refreshToken": "Path=/; Secure; SameSite=Lax",
     "nonce": "Path=/; Secure; HttpOnly; Max-Age=300; SameSite=Lax"
   },
-    "httpHeaders": {
+  "httpHeaders": {
     "Content-Security-Policy": "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; connect-src 'self' https://*.amazonaws.com https://*.amazoncognito.com",
     "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
     "Referrer-Policy": "same-origin",
@@ -20,4 +26,4 @@
     "X-Frame-Options": "DENY",
     "X-Content-Type-Options": "nosniff"
   }
-  }
+}
