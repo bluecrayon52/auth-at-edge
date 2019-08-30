@@ -1,7 +1,7 @@
 // Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 import { stringify as stringifyQueryString } from 'querystring';
-import { getConfig, extractAndParseCookies, getCookieHeaders } from '../shared/shared';
+import { getConfig, extractAndParseCookies, getCookieHeaders } from '../shared/app';
 
 const { clientId, oauthScopes, cognitoAuthDomain, cookieSettings, cloudFrontHeaders, redirectPathSignOut } = getConfig();
 

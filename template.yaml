@@ -73,20 +73,20 @@ Resources:
 Outputs:
   CheckAuthHandler:
     Description: The Lambda function ARN to use in Lambda@Edge for checking the presence of a valid JWT
-    Value: !GetAtt CheckAuthHandler.FunctionArn
+    Value: !GetAtt CheckAuthHandler.Arn
 
   HttpHeadersHandler:
     Description: The Lambda function ARN to use in Lambda@Edge for setting HTTP security headers
-    Value: !GetAtt HttpHeadersHandler.FunctionArn
+    Value: !GetAtt HttpHeadersHandler.Arn
 
   ParseAuthHandler:
     Description: The Lambda function ARN to use in Lambda@Edge for parsing the URL of the redirect from the Cognito hosted UI after succesful sign-in
-    Value: !GetAtt ParseAuthHandler.FunctionArn
+    Value: !GetAtt ParseAuthHandler.Arn
 
   RefreshAuthHandler:
     Description: The Lambda function ARN to use in Lambda@Edge for getting new JWT's using the refresh token
-    Value: !GetAtt RefreshAuthHandler.FunctionArn
+    Value: !GetAtt RefreshAuthHandler.Arn
 
   SignOutHandler:
     Description: The Lambda function ARN to use in Lambda@Edge for signing out
-    Value: !GetAtt SignOutHandler.FunctionArn
+    Value: !GetAtt SignOutHandler.Arn

@@ -8,7 +8,7 @@
     "tsc": "tsc -b",
     "webpack": "webpack --progress",
     "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer ./stats.json",
-    "build": "npm run tsc && npm run webpack",
+    "build": "npm run webpack",
     "update-dependencies": "for DIR in $(ls -d lambda-edge/*); do [[ ! -f ${DIR}/package.json ]] || (cd ${DIR} && echo \"Updating ${DIR} ...\" && npm --depth 9999 update); done",
     "postinstall": "for DIR in $(ls -d lambda-edge/*); do [[ ! -f ${DIR}/package.json ]] || (cd ${DIR} && echo \"Updating ${DIR} ...\" && npm install --ignore-scripts); done"
   },
