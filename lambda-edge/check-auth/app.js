@@ -7,6 +7,7 @@ import { getConfig, extractAndParseCookies, decodeToken } from '../shared/app';
 
 // Allowed characters per https://tools.ietf.org/html/rfc7636#section-4.1
 const SECRET_ALLOWED_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+// Proof Key for Code Exchange
 const PKCE_LENGTH = 43; // Should be between 43 and 128 - per spec
 const NONCE_LENGTH = 16; // how many characters should your nonces be?
 
